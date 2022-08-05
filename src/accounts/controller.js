@@ -10,7 +10,6 @@ const {
 const { webBaseUrl } = require("../utils/config");
 
 function siginup(req, res) {
-  console.log(req.body);
   const { email, phonenumber, password } = req.body;
   const user = new Users();
   const apiKeys = [
@@ -35,6 +34,7 @@ function siginup(req, res) {
         });
       })
       .catch((err) => {
+        console.log(err)
         res.status(500).json({ status: 500, message: "Internal Server Error" });
       });
   });
