@@ -7,7 +7,6 @@ const { jwtToken } = require("./config");
 const saltRounds = 10;
 
 function hashPassword(plainPassword) {
-  console.log(plainPassword)
   return new Promise((resolve, reject) => {
     bcrypt.hash(plainPassword, saltRounds, function (err, hash) {
       if (err) reject(err);

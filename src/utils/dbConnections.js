@@ -53,7 +53,7 @@ connectInstance.getConnection((err ,connection) => {
 // Mongo db connection.
 const db = mongoose.connection;
 function dbInit() {
-    mongoose.connect(`${mongodbURL}/${mongodbName}`)
+    mongoose.connect(`${mongodbURL}`,{useNewUrlParser: true,useUnifiedTopology:true})
 }
 
 db.once('open',_ => {
