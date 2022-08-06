@@ -79,7 +79,6 @@ function getAccount(req, res) {
     const { email, id } = req.accountDetails;
     Users.findOne({ email: email, id: id })
       .then((result) => {
-        console.log(result);
         return res.status(200).json({
           statusCode: 200,
           data: {
@@ -214,6 +213,8 @@ function removeApiKey(req, res) {
 }
 
 function authorization(req, res, next) {
+  console.log('**************')
+  console.log(req.cookies)
   const jwtToken = req.cookies.token;
   if (!jwtToken) {
     return res.status(401).json({ statusCode: 401, message: "Unauthorized" });
