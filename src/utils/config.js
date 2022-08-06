@@ -6,6 +6,6 @@ module.exports = {
     mongodbURL: process.env.MONGO_DB_URL,
     webBaseUrl : process.env.AUTH_WEB_BASE_URL,
     jwtToken: process.env.JWT_SECRET,
-    webBaseUrl: process.env.BASE_URL
+    webBaseUrl: process.env.WEB_BASE_URL
     
 }
