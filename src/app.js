@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
-const  {appPort} = require('./utils/config');
+const  {appPort, webBaseUrl} = require('./utils/config');
 const accounts = require("./accounts/route");
 const {dbInit}  = require('./utils/dbConnections');
 const session = require('express-session');
@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors')
 
 app.use(cors({
-    origin:'http://localhost:3000', 
+    origin:webBaseUrl, 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }))
