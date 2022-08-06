@@ -219,10 +219,7 @@ function authorization(req, res, next) {
     return res.status(401).json({ statusCode: 401, message: "Unauthorized" });
   }
   const decodedToken = decodeJwtToken(jwtToken);
-  if (!jwtToken) {
-    return res.status(401).json({ statusCode: 401, message: "Unauthorized" });
-  }
-  if (!decodedToken) {
+  if (decodedToken === undefined || decodedToken === null) {
     return res.status(401).json({ statusCode: 401, message: "Invalid Token" });
   }
   req.accountDetails = decodedToken;

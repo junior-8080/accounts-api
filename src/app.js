@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
-const  {appPort, webBaseUrl} = require('./utils/config');
+const  {appPort, webBaseUrl, jwtTokenSecret} = require('./utils/config');
 const accounts = require("./accounts/route");
 const {dbInit}  = require('./utils/dbConnections');
 const session = require('express-session');
@@ -19,7 +19,7 @@ app.use(cors({
 
 dbInit();
 app.use(session({
-    secret: "secret",
+    secret: jwtTokenSecret,
     resave: false ,
     saveUninitialized: true ,
 }))

@@ -2,7 +2,7 @@ const { isJSONType } = require("ajv/dist/compile/rules");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const uniquestring = require("randomstring");
-const { jwtToken } = require("./config");
+const { jwtTokenSecret } = require("./config");
 
 const saltRounds = 10;
 
@@ -23,12 +23,12 @@ function unHashPassword({ plain, hash }) {
   });
 }
 function generateToken(tokenData) {
-  const token = jwt.sign(tokenData,jwtToken , { expiresIn: "24h" });
+  const token = jwt.sign(tokenData,jwtTokenSecret , { expiresIn: "24h" });
   return token;
 }
 
 function decodeJwtToken(token) {
-  const payload = jwt.verify(token, jwtToken);
+  const payload = jwt.verify(token, jwtTokenSecret);
   return payload;
 }
 
