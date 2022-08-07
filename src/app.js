@@ -11,11 +11,16 @@ require('./utils/auth');
 const cookieParser = require('cookie-parser');
 const cors = require('cors')
 
+
+
+app.set("trust proxy", 1);
 app.use(cors({
     origin:webBaseUrl, 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }))
+
+app.use(cookieParser())
 
 dbInit();
 app.use(session({
@@ -24,9 +29,8 @@ app.use(session({
     saveUninitialized: true ,
 }))
 
-app.use(cookieParser())
-app.use(passport.initialize()) // init passport on every route call
-app.use(passport.session())    //allow passport to use express-sessions
+ app.use(passport.initialize()) // init passport on every route call
+ app.use(passport.session())    //allow passport to use express-sessions
 
 app.use(bodyParser.json());
 app.use('/v1/auth',accounts);
