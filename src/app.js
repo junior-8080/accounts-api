@@ -23,6 +23,7 @@ app.use(cookieParser());
 dbInit();
 
 if (process.env.NODE_ENV === "production") {
+  console.log('t<<<<<<<<<<<< is prodcution.>>>>>>>>')
   app.set("trust proxy", 1);
 }
 
