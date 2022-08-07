@@ -23,7 +23,6 @@ app.use(cookieParser());
 dbInit();
 
 if (process.env.NODE_ENV === "production") {
-  console.log('t<<<<<<<<<<<< is prodcution.>>>>>>>>')
   app.set("trust proxy", 1);
 }
 
@@ -36,6 +35,7 @@ app.use(
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production" ? true : false,
+      path:"/"
     },
   })
 );

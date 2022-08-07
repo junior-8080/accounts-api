@@ -210,9 +210,8 @@ function removeApiKey(req, res) {
 }
 
 function authorization(req, res, next) {
-  // console.log('**************')
-  // console.log(req.cookies)
-  const jwtToken = req.cookies.token;
+
+  const jwtToken = req.headers.token;
   if (!jwtToken) {
     return res.status(401).json({ statusCode: 401, message: "Unauthorized" });
   }
