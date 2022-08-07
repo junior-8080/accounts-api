@@ -60,11 +60,7 @@ function emailPasswordAuth(req, res) {
         return res.status(404).json(data);
       }
       const token = generateToken(tokenData);
-      res.cookie("token", token, {
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
-        sameSite: process.env.NODE_ENV === "development" ? "lax":"none"
-      });
+      res.cookie("token", token)
       return res.json({
         statusCode: 200,
         data: {
