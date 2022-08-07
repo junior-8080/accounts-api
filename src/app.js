@@ -13,16 +13,16 @@ const cors = require('cors')
 
 
 
-app.set("trust proxy", 1);
 app.use(cors({
     origin:webBaseUrl, 
     credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
 }))
 
 app.use(cookieParser())
 
 dbInit();
+
+app.set("trust proxy", 1);
 app.use(session({
     secret: jwtTokenSecret,
     resave: false ,
